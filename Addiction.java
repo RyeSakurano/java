@@ -17,7 +17,7 @@ import java.io.*;
  * 			Addiction.rest(Addiction.judgeRest());
  * 			basePlay();
  * 			if (Addiction.judgePlay())
- * 				Addiction.rest(PLAY);
+ * 				Addiction.rest(Addiction.REST);
  * 		}
  * 	}
  */
@@ -52,7 +52,7 @@ public class Addiction {
 	/* 计算休息剩余时间（毫秒） */
 	public static long judgeRest() {
 		/* 载入真实的休息开始时间，避免重启开挂 */
-		while (game_begin_time < 0L) {
+		if (game_begin_time < 0L) {
 			try {
 				DataInputStream fin = new DataInputStream(new FileInputStream("rest.txt"));
 				rest_begin_time = fin.readLong();
